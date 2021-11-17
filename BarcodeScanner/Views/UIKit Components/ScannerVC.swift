@@ -8,9 +8,9 @@
 import UIKit
 import AVFoundation
 
-enum CameraError: String{
-    case invalidDeviceInput = "Something is wrong with the camera on your device. We are unable to capture the input"
-    case invalidScannedValue = "Value scanned is not valid. This app scans EAN-8 and EAN-13"
+enum CameraError{
+    case invalidDeviceInput
+    case invalidScannedValue
 }
 
 protocol ScannerVCDelegate: AnyObject{
@@ -74,7 +74,7 @@ final class ScannerVC: UIViewController{
         if captureSession.canAddOutput(metaDataOutput){
             captureSession.addOutput(metaDataOutput)
             metaDataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-            metaDataOutput.metadataObjectTypes = [.ean8, .ean13]
+            metaDataOutput.metadataObjectTypes = [.ean8, .ean13, .qr]
         } else {
             scannerDelegate?.didSurface(error: .invalidDeviceInput)
             return
