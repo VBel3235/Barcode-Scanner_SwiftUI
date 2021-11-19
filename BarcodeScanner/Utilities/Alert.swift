@@ -9,12 +9,12 @@ import SwiftUI
 
 struct AlertItem: Identifiable {
     let id = UUID()
-    let title: String
-    let message: String
+    let title: Text
+    let message: Text
     let dismissButton: Alert.Button
 }
 
 struct AlertContext {
-    static let invalidDeviceInput = AlertItem(title: "invalid device input", message: "Something is wrong with the camera on your device. We are unable to capture the input", dismissButton: .default(Text("OK")))
-    static let invalidScannedType = AlertItem(title: "Invalid scanned type", message: "Value scanned is not valid. This app scans EAN-8 and EAN-13", dismissButton: .default(Text("OK")))
+    static let invalidDeviceInput = AlertItem(title: Text("invalid device input"), message: Text("Something is wrong with the camera on your device. We are unable to capture the input"), dismissButton: .default(Text("OK")))
+    static let invalidScannedType = AlertItem(title: Text("Invalid scanned type"), message: Text("Value scanned is not valid. This app scans EAN-8 and EAN-13"), dismissButton: .default(Text("OK")))
 }
